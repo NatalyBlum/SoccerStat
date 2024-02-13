@@ -1,21 +1,19 @@
-import {memo} from "react";
+import React from 'react';
+import Header from "../header/header";
+import Main from "../main/main";
 
 function PageLayout() {
 
   return (
     <div>
-      {/* <div>
+      <div>
         <Header />
       </div>
       <div>
         <Main />
       </div>
-      <div>
-        <Footer />
-      </div> */}
-
     </div>
   );
 }
 
-export default memo(PageLayout);
+export default PageLayout;
