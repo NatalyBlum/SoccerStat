@@ -1,0 +1,65 @@
+.leagues {
+  padding: 15px;
+  border-top: none;
+}
+
+/* .headerLink {
+  display: block;
+	border: 1px solid #b5e9a7;
+	border-radius: 3px;
+	position: relative;
+	background: #fff;
+	margin: 0 20px 20px 0;
+	text-decoration: none;
+	color: #474747;
+	z-index: 0;
+	height: 300px;
+}
+
+.headerItem {
+  display: block;
+	width: 100%;
+	float: left;
+	transition: width .2s;
+} */
+
+.cardsList {
+  display: flex;
+  padding: 0;
+  margin-bottom: 0;
+  list-style: none;
+  flex-wrap: wrap;
+  font-size: 16px;
+  line-height: 16px;
+  color: #666;
+}
+
+.cardsList div:not(:last-child) {
+  margin-right: 15px;
+}
+
+.cardsItem {
+  margin-bottom: 15px;
+  padding: 40px 42px 32px 45px;
+  width: 32%;
+  min-height: 150px;
+  border: 1px solid black;
+}
+
+@media only screen and (min-width: 450px) {
+	.headerItem {
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.headerItem {
+		width: 33.333%;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.headerItem {
+		width: 25%;
+	}
+}

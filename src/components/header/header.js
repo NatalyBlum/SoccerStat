@@ -14,7 +14,7 @@ function Header() {
             </a>
           </li>
           <li className={styles.headerItem}>
-            <NavLink to={'/leagues'} className={styles.headerLink}>Лиги</NavLink>
+            <NavLink to={'/'} className={styles.headerLink}>Лиги</NavLink>
           </li>
           <li className={styles.headerItem}>
             <NavLink to={'/teams'} className={styles.headerLink}>Команды</NavLink>

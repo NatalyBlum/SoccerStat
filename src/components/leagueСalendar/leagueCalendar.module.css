@@ -1,0 +1,11 @@
+.leagueCalendar {
+  display: flex;
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 23px;
+  left: 45px;
+  transform: rotate(270deg);
+}

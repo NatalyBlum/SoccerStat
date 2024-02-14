@@ -1,0 +1,21 @@
+.search {
+  position: relative;
+  display: flex;
+  margin-bottom: 15px;
+  max-width: 539px;
+  min-width: 315px;
+}
+
+.searchInput {
+  height: 25px;
+}
+
+.searchBtn {
+  position: absolute;
+  right: 397px;
+  top: 3px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
