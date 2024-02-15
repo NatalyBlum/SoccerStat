@@ -1,7 +1,22 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import styles from './search.module.css';
+import axios from 'axios';
+const BASE_URL = 'http://api.football-data.org/v4/competitions/';
 
 function Search() {
+
+  const [query, setQuery] = useState('react');
+
+
+  // useEffect(() => {
+    // axios.get(`http://api.football-data.org/v4/competitions/{id}/matches`)
+    //       .then(response => {
+    //         setMatches(response.data.matches);
+    //         setCount(response.data.count);
+    //       })
+  //   axios.get(BASE_URL + '{id}/matches')
+  //     .then((data) => console.log(data))
+  // }, [query])
 
   return (
     <form className={styles.search} action="https://jsonplaceholder.typicode.com/ posts" method="post">

@@ -1,3 +1,7 @@
+.calendarBox {
+  padding: 15px;
+}
+
 .leagueCalendar {
   display: flex;
   position: relative;
@@ -8,4 +12,22 @@
   top: 23px;
   left: 45px;
   transform: rotate(270deg);
+}
+
+.name {
+  padding-left: 27px;
+}
+
+.head {
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.text {
+  padding-right: 10px;
+}
+
+.inputDate {
+  padding-right: 10px;
 }

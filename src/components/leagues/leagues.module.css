@@ -34,14 +34,18 @@
   color: #666;
 }
 
-.cardsList div:not(:last-child) {
+.cardsItem:not(:last-child) {
   margin-right: 15px;
+}
+
+.cardsItem:nth-child(3n) {
+  margin-right: 0;
 }
 
 .cardsItem {
   margin-bottom: 15px;
   padding: 40px 42px 32px 45px;
-  width: 32%;
+  width: 32.6%;
   min-height: 150px;
   border: 1px solid black;
 }

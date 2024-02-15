@@ -1,327 +1,26 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Leagues from './components/leagues/leagues';
 import Teams from './components/teams/teams';
 import Header from './components/header/header';
 import LeagueCalendar from './components/leagueСalendar/leagueСalendar';
 import styles from './App.module.css';
-import Pagination from './components/pagination/pagination';
-// import axios from 'axios';
+import axios from 'axios';
+export const BASE_URL = 'http://example.front.ylab.io/api/v1/articles/';
+// export const BASE_URL = 'http://api.football-data.org/v4/competitions/';
 
 function App() {
 
-  // const [data, setData] = useState([]);
-
-  const data = [
-    {
-    "name": "Area",
-    "id": "5572c593-f376-4e4c-bb83-2aaf97a6a63f",
-    "protocolProfileBehavior": {
-    "disabledSystemHeaders": {
-    "user-agent": true
-    }
-    },
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": "{{url}}/v4/competitions/PL/"
-    },
-    "response": []
-    },
-    {
-    "name": "Area List",
-    "id": "fbec63cb-8055-4359-9293-bb7b56e2d2c7",
-    "protocolProfileBehavior": {
-    "disabledSystemHeaders": {
-    "user-agent": true
-    }
-    },
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": "{{url}}/v4/areas/"
-    },
-    "response": []
-    },
-    {
-    "name": "Competition",
-    "id": "8b83f46c-c0ee-455d-a02d-30a5ea31fb61",
-    "protocolProfileBehavior": {
-    "disabledSystemHeaders": {
-    "user-agent": true
-    }
-    },
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": "{{url}}/v4/competitions/PL/"
-    },
-    "response": []
-    },
-    {
-    "name": "Competition List",
-    "id": "5500798d-8cf0-4dbe-be6e-407076d4f890",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": "{{url}}/v4/competitions"
-    },
-    "response": []
-    },
-    {
-    "name": "Competition / Standings",
-    "event": [
-    {
-    "listen": "test",
-    "script": {
-    "id": "a61b218e-237c-452e-8a23-6398cc074061",
-    "exec": [
-    ""
-    ],
-    "type": "text/javascript"
-    }
-    }
-    ],
-    "id": "64429672-8e60-4e18-9ae7-ad1f461ed9cf",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": {
-    "raw": "{{url}}/v4/competitions/PL/standings?season=2010&matchday=3",
-    "host": [
-    "{{url}}"
-    ],
-    "path": [
-    "v4",
-    "competitions",
-    "PL",
-    "standings"
-    ],
-    "query": [
-    {
-    "key": "season",
-    "value": "2010"
-    },
-    {
-    "key": "matchday",
-    "value": "3"
-    }
-    ]
-    }
-    },
-    "response": []
-    },
-    {
-    "name": "Competition / Matches",
-    "id": "7a10fef2-5927-455b-8b92-39273aab7d04",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": {
-    "raw": "{{url}}/v4/competitions/BL1/matches?matchday=23",
-    "host": [
-    "{{url}}"
-    ],
-    "path": [
-    "v4",
-    "competitions",
-    "BL1",
-    "matches"
-    ],
-    "query": [
-    {
-    "key": "matchday",
-    "value": "23"
-    }
-    ]
-    }
-    },
-    "response": []
-    },
-    {
-    "name": "Competition / Teams",
-    "id": "f8229829-c5ed-430b-b0c7-030426aa9ae2",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": "{{url}}/v4/competitions/MLS/teams"
-    },
-    "response": []
-    },
-    {
-    "name": "Competition / Scorer",
-    "id": "88e8fa9a-a4d0-4e9d-8bee-71cf79d04c2d",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": "{{url}}/v4/competitions/PL/scorers"
-    },
-    "response": []
-    },
-    {
-    "name": "Team",
-    "id": "1c97d125-1a4d-4fdd-a26b-a700d9049025",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": "{{url}}/v4/teams/90/"
-    },
-    "response": []
-    },
-    {
-    "name": "Team List",
-    "id": "14982741-a57c-460e-a66c-4ef696e67f78",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": {
-    "raw": "{{url}}/v4/teams?limit=100&offset=100",
-    "host": [
-    "{{url}}"
-    ],
-    "path": [
-    "v4",
-    "teams"
-    ],
-    "query": [
-    {
-    "key": "limit",
-    "value": "100"
-    },
-    {
-    "key": "offset",
-    "value": "100"
-    }
-    ]
-    }
-    },
-    "response": []
-    },
-    {
-    "name": "Team / Matches",
-    "id": "90592025-2160-42e3-b1e6-ebee384b433b",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": "{{url}}/v4/teams/19/matches"
-    },
-    "response": []
-    },
-    {
-    "name": "Person",
-    "id": "4b6f8245-98bd-44f0-a11a-126e562d3fbe",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": "{{url}}/v4/persons/16275"
-    },
-    "response": []
-    },
-    {
-    "name": "Person / Matches",
-    "id": "9d469161-cfb0-4248-9831-515c10fd470d",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": {
-    "raw": "{{url}}/v4/persons/16275/matches?limit=40",
-    "host": [
-    "{{url}}"
-    ],
-    "path": [
-    "v4",
-    "persons",
-    "16275",
-    "matches"
-    ],
-    "query": [
-    {
-    "key": "limit",
-    "value": "40"
-    }
-    ]
-    }
-    },
-    "response": []
-    },
-    {
-    "name": "Match",
-    "id": "a18b4e8f-527c-47f7-a07b-204e0ae365b3",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": "{{url}}/v4/matches/327117"
-    },
-    "response": []
-    },
-    {
-    "name": "Match List",
-    "id": "60fed026-8091-49b7-8f76-909ed3e3ef75",
-    "request": {
-    "method": "GET",
-    "header": [
-    {
-    "key": "X-Unfold-Lineups",
-    "value": "true",
-    "type": "text"
-    },
-    {
-    "key": "X-Unfold-Bookings",
-    "value": "false",
-    "type": "text",
-    "disabled": true
-    },
-    {
-    "key": "X-Unfold-Subs",
-    "value": "false",
-    "type": "text",
-    "disabled": true
-    },
-    {
-    "key": "X-Unfold-Goals",
-    "value": "true",
-    "type": "text"
-    }
-    ],
-    "url": "{{url}}/v4/matches/"
-    },
-    "response": []
-    },
-    {
-    "name": "Match / Head2Head",
-    "id": "27f7f2d1-646a-47f3-a3d1-642f9ac4e7cf",
-    "request": {
-    "method": "GET",
-    "header": [],
-    "url": {
-    "raw": "{{url}}/v4/matches/327125/head2head?limit=15",
-    "host": [
-    "{{url}}"
-    ],
-    "path": [
-    "v4",
-    "matches",
-    "327125",
-    "head2head"
-    ],
-    "query": [
-    {
-    "key": "limit",
-    "value": "15"
-    }
-    ]
-    }
-    },
-    "response": []
-    }
-    ]
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    // axios.get(`http://api.football-data.org/v4/competitions`)
-    //       .then(response => {
-    //         setData(response.data.competitions);
-    //       })
+    axios.get(BASE_URL)
+          .then(response => {
+            // console.log(response.data.result.items)
+            setData(response.data.result.items);
+          })
   }, [])
+
 
   return (
     <div className={styles.App}>
@@ -336,18 +35,10 @@ function App() {
         <Route  path={'/teams'}
                 element={<Teams />} />
         <Route  path={'/leagueCalendar/:id'}
-                element={<LeagueCalendar/>} />
+                element={<LeagueCalendar />} />
       </Routes> : <></>
       }
-      <Pagination />
     </div>
-      // <Routes>
-      //   <Route  path={`/`}
-      //           element={<Leagues data={data} />} />
-      //   <Route  path={'/teams'}
-      //           element={<Teams />} />
-      // </Routes>
-    // </div>
   );
 }
 
