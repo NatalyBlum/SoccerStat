@@ -14,7 +14,7 @@ function PaginationBox(props) {
 
   useEffect(() => {
       axios.get(BASE_URL + `?limit=${productPerPage}&skip=${skip}&fields=items(_id, title, price, edition, description),count`)
-        .then((data) => console.log(data.data.result.items))
+        .then((data) => console.log('4'))
     }, [currentPage])
 
     return (
