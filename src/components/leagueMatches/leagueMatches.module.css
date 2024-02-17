@@ -2,7 +2,7 @@
   padding: 15px;
 }
 
-.leagueCalendar {
+.leagueMatches {
   display: flex;
   position: relative;
 }
@@ -30,4 +30,8 @@
 
 .inputDate {
   padding-right: 10px;
+}
+
+.filter {
+  margin-bottom: 15px;
 }

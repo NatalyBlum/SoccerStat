@@ -3,38 +3,52 @@ import { Route, Routes } from 'react-router-dom';
 import Leagues from './components/leagues/leagues';
 import Teams from './components/teams/teams';
 import Header from './components/header/header';
-import LeagueCalendar from './components/leagueСalendar/leagueСalendar';
+import LeagueMatches from './components/leagueMatches/leagueMatches';
 import styles from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { LEAGUES, COUNT } from './store/actions';
-export const BASE_URL = 'http://example.front.ylab.io/api/v1/articles/';
+import { LEAGUES, COUNT_LEAGUES, GET_ERROR } from './store/actions';
+export const BASE_URL = 'http://example.front.ylab.io/api/v1/articles';
 // export const BASE_URL = 'http://api.football-data.org/v4/competitions/';
 
 function App() {
 
-  // const [data, setData] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get('http://example.front.ylab.io/api/v1/articles/')
+    // axios.get('http://api.football-data.org/v4/competitions/')
+    // .then(response => {
+    //   console.log(response)
+    //   dispatch({
+    //     type: LEAGUES,
+    //     leagues: response.data.competitions,
+    //   },
+    //   {
+    //     type: COUNT_LEAGUES,
+    //     count: response.data.count,
+    //   })
+    // })
+    axios.get(BASE_URL)
           .then(response => {
+            console.log(response)
+            if (response.status > 299) {
+              dispatch({
+              type: GET_ERROR,
+              })
+            }
             // console.log(response.data.result.items)
-            // setData(response.data.result.items);
             dispatch({
               type: LEAGUES,
               leagues: response.data.result.items,
-            },
-            {
-              type: COUNT,
-              count: response.data.result.items.length,
+            })
+            dispatch({
+              type: COUNT_LEAGUES,
+              countLeagues: response.data.result.items.length,
             })
           })
   }, [])
 
-  const data = useSelector((state) => state.leagues);
-  // console.log(data)
-
+  const data = useSelector((state) => state.leagues.leagues);
 
   return (
     <div className={styles.App}>
@@ -48,8 +62,8 @@ function App() {
                 element={<Leagues />} />
         <Route  path={'/teams'}
                 element={<Teams />} />
-        <Route  path={'/leagueCalendar/:id'}
-                element={<LeagueCalendar />} />
+        <Route  path={'/leagueMatches/:id'}
+                element={<LeagueMatches />} />
       </Routes> : <></>
       }
     </div>

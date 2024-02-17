@@ -1,9 +1,13 @@
-import { LEAGUES, LEAGUES_CALENDAR, COUNT, CURRENT_PAGE_DATA_LEAGUE_MATCH, GET_ERROR } from "./actions";
+import { LEAGUES, LEAGUES_CALENDAR, COUNT_LEAGUES, GET_ERROR, CURRENT_PAGE, COUNT_LEAGUE_MATCHES, LEAGUE_MATCHES } from "./actions";
 
 let initialState = {
   leagues: [],
   leaguesCalendar: [],
-  count: 0,
+  leagueMatches: [],
+  countLeagues: 0,
+  countLeagueMatches: 0,
+  currentPage: 1,
+
 }
 
 export const leaguesReducer = (state = initialState, action) => {
@@ -21,22 +25,38 @@ export const leaguesReducer = (state = initialState, action) => {
         leaguesCalendar: action.leaguesCalendar,
         isError: false,
       }
-    case COUNT:
+    case LEAGUE_MATCHES:
       return {
         ...state,
-        count: action.count,
-      }
-    case CURRENT_PAGE_DATA_LEAGUE_MATCH:
-      return {
-        ...state,
-        currentPageDataLeagueMatch: action.currentPageDataLeagueMatch,
+        leagueMatches: action.leagueMatches,
         isError: false,
       }
-      case GET_ERROR:
-        return {
-          ...state,
-          isError: true,
-        }
+    case COUNT_LEAGUES:
+      return {
+        ...state,
+        countLeagues: action.countLeagues,
+      }
+    case COUNT_LEAGUE_MATCHES:
+      return {
+        ...state,
+        count: action.countLeagueMatches,
+      }
+    // case CURRENT_PAGE_DATA_LEAGUE_MATCH:
+    //   return {
+    //     ...state,
+    //     currentPageDataLeagueMatch: action.currentPageDataLeagueMatch,
+    //     isError: false,
+    //   }
+    case GET_ERROR:
+      return {
+        ...state,
+        isError: true,
+      }
+    case CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      }
     default:
       return state
   }

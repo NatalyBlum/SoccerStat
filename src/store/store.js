@@ -4,7 +4,7 @@
 let store = {
   state: {
     leagues: [],
-    leagueCalendar: [],
+    leagueMatches: [],
     count: 0,
     currentPageDataLeagueMatch: [],
   },
