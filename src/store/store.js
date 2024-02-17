@@ -5,6 +5,8 @@ let store = {
   state: {
     leagues: [],
     leagueCalendar: [],
+    count: 0,
+    currentPageDataLeagueMatch: [],
   },
   _callSubscriber() {
     console.log('state changed');

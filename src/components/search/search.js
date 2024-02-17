@@ -1,22 +1,20 @@
-import { useEffect, useState } from 'react';
 import styles from './search.module.css';
-import axios from 'axios';
-const BASE_URL = 'http://api.football-data.org/v4/competitions/';
+import { useSelector } from 'react-redux';
 
 function Search() {
 
-  const [query, setQuery] = useState('react');
+  const data = useSelector((state) => state.leagues.leagues);
 
+  const getDataLeague = (data) => {
+    let dataLeague = [];
+    data.map((item) => {
+      dataLeague.push(item.name)
+      dataLeague.push(item.name)
+    })
+    return dataLeague;
+  }
 
-  // useEffect(() => {
-    // axios.get(`http://api.football-data.org/v4/competitions/{id}/matches`)
-    //       .then(response => {
-    //         setMatches(response.data.matches);
-    //         setCount(response.data.count);
-    //       })
-  //   axios.get(BASE_URL + '{id}/matches')
-  //     .then((data) => console.log(data))
-  // }, [query])
+  let dataLeague = getDataLeague(data);
 
   return (
     <form className={styles.search} action="https://jsonplaceholder.typicode.com/ posts" method="post">

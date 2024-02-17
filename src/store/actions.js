@@ -1,3 +1,5 @@
 export const LEAGUES = 'LEAGUES';
 export const LEAGUES_CALENDAR = 'LEAGUES_CALENDAR';
 export const COUNT = 'COUNT';
+export const CURRENT_PAGE_DATA_LEAGUE_MATCH = 'CURRENT_PAGE_DATA_LEAGUE_MATCH';
+export const GET_ERROR = 'GET_ERROR';
