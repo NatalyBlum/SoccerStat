@@ -7,16 +7,21 @@ import { useSelector } from 'react-redux';
 
 function Leagues() {
 
-  const data = useSelector((state) => state.leagues.leagues);
+  const filteredData = useSelector((state) => state.leagues.filteredData);
+  console.log(filteredData)
   const isError  = useSelector((state) => state.leagues.isError);
   const currentPage = useSelector((state) => state.leagues.currentPage);
-  const countLeagues = useSelector((state) => state.leagues.countLeagues);
   const [leaguePerPage] = useState(3);
   const skip = (currentPage - 1) * leaguePerPage;
-  const countPage = Math.ceil(countLeagues / leaguePerPage);
 
-  const currentData = data.slice(skip, skip + leaguePerPage);
-  // console.log(currentData)
+  const getCurrentData = (data) => {
+    if (!data) {
+      return [];
+    }
+    return data.slice(skip, skip + leaguePerPage);
+  }
+  let currentData = getCurrentData(filteredData);
+  const countPage = Math.ceil(filteredData.length / leaguePerPage);
 
   return (
     <div className={styles.leagues}>
@@ -27,16 +32,19 @@ function Leagues() {
           'Is Error'
         </div> : <></>
       }
-      <div>
-        <div className={styles.cardsList}>{
-        currentData.map(item => <NavLink to={`/leagueMatches/${item._id}`} key={item._id} item={item} className={styles.cardsItem}>
-          <p>{item.name}</p>
-          <p>{item.name}</p>
-        </NavLink>
-        )}
-        </div>
-        <PaginationBox count={countPage}/>
-      </div>
+      {
+        currentData.length ?
+        <div>
+          <div className={styles.cardsList}>{
+            currentData.map(item => <NavLink to={`/leagueMatches/${item._id}`} key={item._id} item={item} className={styles.cardsItem}>
+              <p>{item.name}</p>
+              <p>{item.name}</p>
+            </NavLink>
+            )}
+            </div>
+            <PaginationBox count={countPage}/>
+          </div> : <div className={styles.message}>По Вашему запросу ничего не найдено</div>
+      }
     </div>
   );
 }

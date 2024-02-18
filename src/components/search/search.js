@@ -1,25 +1,52 @@
 import styles from './search.module.css';
 import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { FILTERED_DATA } from '../../store/actions';
+
+const filterData = (searchText, arrData) => {
+  if (searchText === '') {
+    console.log(searchText)
+    return arrData;
+  }
+  console.log(searchText)
+  return arrData.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()))
+}
 
 function Search() {
 
+  const dispatch = useDispatch();
   const data = useSelector((state) => state.leagues.leagues);
+  const [dataList, setDataList] = useState(data);
+  const [search, setSearch] = useState('');
 
-  const getDataLeague = (data) => {
-    let dataLeague = [];
-    data.map((item) => {
-      dataLeague.push(item.name)
-      dataLeague.push(item.name)
+  useEffect(() => {
+    const Debounce = setTimeout(() => {
+      const filteredData = filterData(search, data);
+      setDataList(filteredData);
+    }, 300);
+
+    return () => setTimeout(Debounce);
+  }, [search])
+
+  useEffect(() => {
+    dispatch({
+      type: FILTERED_DATA,
+      filteredData: dataList,
     })
-    return dataLeague;
-  }
-
-  let dataLeague = getDataLeague(data);
+  }, [dataList])
 
   return (
     <form className={styles.search} action="https://jsonplaceholder.typicode.com/ posts" method="post">
       <label>
-        <input className={styles.searchInput} type="text" name="search" placeholder='Поиск'/>
+        <input
+          className={styles.searchInput}
+          value={search}
+          type="text"
+          name="search"
+          placeholder='Поиск'
+          onChange={(e) => setSearch(e.target.value)}
+          />
       </label>
       <button className={styles.searchBtn} type="submit" aria-label="Найти">
         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">

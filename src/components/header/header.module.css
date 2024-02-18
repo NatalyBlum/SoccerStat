@@ -14,11 +14,36 @@
   justify-content: start;
 }
 
+.headerLink {
+  position: relative;
+}
+
+.headerLink:after {
+  display: block;
+	position: absolute;
+	left: 0;
+	width: 0;
+	height: 1px;
+	background-color: #0b7d9d;
+	content: "";
+	transition: width 0.3s ease-out;
+}
+
+.headerLink:hover:after {
+	width: 100%;
+}
+
+.headerLink:hover {
+  color: #0b7d9d;
+  transition: width 0.3s ease-out;
+}
+
+/*
 .headerLink:focus {
   text-decoration: none;
   justify-content: start;
   color: blue;
-}
+} */
 
 .headerItem {
   padding: 25px;

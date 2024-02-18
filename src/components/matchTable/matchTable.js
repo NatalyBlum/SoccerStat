@@ -2,11 +2,11 @@ import styles from './matchTable.module.css';
 
 function MatchTable(props) {
 
-  console.log(props.data[0].dateCreate)
-
   return (
     <div>
-      <table id="table" className={styles.matchTable}>
+      {
+        props.data ?
+        <table id="table" className={styles.matchTable}>
         {
           props.data.map((item) => <tr className={styles.string} key={item._id}>
               <td className={styles.cell}>{item.dateCreate}</td>
@@ -20,7 +20,8 @@ function MatchTable(props) {
             </tr>
           )
         }
-      </table>
+      </table> : <></>
+      }
     </div>
   );
 }
