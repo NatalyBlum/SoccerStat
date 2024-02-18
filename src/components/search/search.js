@@ -6,11 +6,9 @@ import { FILTERED_DATA } from '../../store/actions';
 
 const filterData = (searchText, arrData) => {
   if (searchText === '') {
-    console.log(searchText)
     return arrData;
   }
-  console.log(searchText)
-  return arrData.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()))
+  return arrData.filter((item) => (item.name.toLowerCase().includes(searchText.toLowerCase())) || (item.title.toLowerCase().includes(searchText.toLowerCase())))
 }
 
 function Search() {

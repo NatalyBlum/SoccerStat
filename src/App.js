@@ -18,7 +18,6 @@ function App() {
   useEffect(() => {
     // axios.get('http://api.football-data.org/v4/competitions/')
     // .then(response => {
-    //   console.log(response)
     //   dispatch({
     //     type: LEAGUES,
     //     leagues: response.data.competitions,
@@ -30,13 +29,11 @@ function App() {
     // })
     axios.get(BASE_URL)
           .then(response => {
-            console.log(response)
             if (response.status > 299) {
               dispatch({
               type: GET_ERROR,
               })
             }
-            // console.log(response.data.result.items)
             dispatch({
               type: LEAGUES,
               leagues: response.data.result.items,

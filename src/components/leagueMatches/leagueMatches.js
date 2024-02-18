@@ -4,14 +4,14 @@ import PaginationBox from '../paginationBox/paginationBox';
 import styles from './leagueMatches.module.css';
 import MatchTable from '../matchTable/matchTable';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { LEAGUE_MATCHES, COUNT_LEAGUE_MATCHES, GET_ERROR } from '../../store/actions';
-import { BASE_URL } from '../../App';
+// import axios from 'axios';
+// import { LEAGUE_MATCHES, COUNT_LEAGUE_MATCHES, GET_ERROR } from '../../store/actions';
+// import { BASE_URL } from '../../App';
 import { NavLink } from 'react-router-dom';
 
 function LeagueMatches() {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { id } = useParams();
   const data = useSelector((state) => state.leagues.leagues);
   const currentLeague = data.filter((item) => item._id === id);
@@ -38,23 +38,22 @@ function LeagueMatches() {
         //           count: response.data.count,
         //         })
         //       })
-            axios.get(BASE_URL)
-              .then(response => {
-                if (response.status > 299) {
-                  dispatch({
-                  type: GET_ERROR,
-                  })
-                }
-                console.log(response)
-                dispatch({
-                  type: LEAGUE_MATCHES,
-                  league_matches: response.data.result.items,
-                })
-                dispatch({
-                  type: COUNT_LEAGUE_MATCHES,
-                  countLeagueMatches: response.data.result.items.length,
-                })
-              })
+            // axios.get(BASE_URL)
+            //   .then(response => {
+            //     if (response.status > 299) {
+            //       dispatch({
+            //       type: GET_ERROR,
+            //       })
+            //     }
+            //     dispatch({
+            //       type: LEAGUE_MATCHES,
+            //       league_matches: response.data.result.items,
+            //     })
+            //     dispatch({
+            //       type: COUNT_LEAGUE_MATCHES,
+            //       countLeagueMatches: response.data.result.items.length,
+            //     })
+            //   })
   }, [])
 
   return (

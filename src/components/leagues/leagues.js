@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 function Leagues() {
 
   const filteredData = useSelector((state) => state.leagues.filteredData);
-  console.log(filteredData)
   const isError  = useSelector((state) => state.leagues.isError);
   const currentPage = useSelector((state) => state.leagues.currentPage);
   const [leaguePerPage] = useState(3);
