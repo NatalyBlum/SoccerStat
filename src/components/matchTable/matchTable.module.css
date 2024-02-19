@@ -4,6 +4,12 @@
 	padding: 5px 25px 5px 25px;
 }
 
+.cellScore {
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+	padding: 5px 25px 5px 25px;
+}
+
 .matchTable {
 	width: 100%;
 	margin-bottom: 20px;
@@ -17,3 +23,13 @@
 	border: 1px solid #dddddd;
 }
 
+.score {
+  padding-right: 5px;
+  width: 80px;
+}
+
+.scoreGrey {
+  padding-right: 5px;
+  width: 80px;
+  color: rgb(170, 170, 170);
+}

@@ -8,6 +8,21 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { LEAGUE_MATCHES, COUNT_LEAGUE_MATCHES, GET_ERROR } from '../../store/actions';
 // import { BASE_URL } from '../../App';
 import { NavLink } from 'react-router-dom';
+import  MOCK_DATA from '../../MOCK_DATA.json';
+
+const gf = (data) => {
+  let obj = {}
+  data.map((item) => {
+    if (obj[item.status]) {
+      obj[item.status] += 1
+    } else {
+      obj[item.status] = 1
+    }
+  })
+  return obj
+}
+
+console.log(gf(MOCK_DATA))
 
 function LeagueMatches() {
 
@@ -16,44 +31,35 @@ function LeagueMatches() {
   const data = useSelector((state) => state.leagues.leagues);
   const currentLeague = data.filter((item) => item._id === id);
   const currentPage = useSelector((state) => state.leagues.currentPage);
-  const countMatches = useSelector((state) => state.leagues.countLeagueMatches);
   const isError  = useSelector((state) => state.leagues.isError);
+  // const countMatches = useSelector((state) => state.leagues.countLeagueMatches);
+  const countMatches = MOCK_DATA.length;
+  console.log(countMatches);
   const [leaguePerPage] = useState(8);
   const skip = (currentPage - 1) * leaguePerPage;
   const countPage = Math.ceil(countMatches / leaguePerPage);
-
-
-  const currentData = data.slice(skip, skip + leaguePerPage);
+  // const currentData = data.slice(skip, skip + leaguePerPage);
+  const currentData = MOCK_DATA.slice(skip, skip + leaguePerPage);
+  console.log(currentData);
 
   useEffect(() => {
         // axios.get(`http://api.football-data.org/v4/competitions/${id}/matches`)
         //       .then(response => {
-        //         console.log(response)
-        //         dispatch({
-        //           type: MATCHES_LEAGUE,
-        //           matches_league: response.data.competitions,
-        //         },
-        //         {
-        //           type: COUNT_MATCHES_LEAGUE,
-        //           count: response.data.count,
-        //         })
-        //       })
-            // axios.get(BASE_URL)
-            //   .then(response => {
-            //     if (response.status > 299) {
+        //         if (response.status > 299) {
             //       dispatch({
             //       type: GET_ERROR,
             //       })
             //     }
-            //     dispatch({
-            //       type: LEAGUE_MATCHES,
-            //       league_matches: response.data.result.items,
-            //     })
-            //     dispatch({
-            //       type: COUNT_LEAGUE_MATCHES,
-            //       countLeagueMatches: response.data.result.items.length,
-            //     })
-            //   })
+        //         console.log(response)
+        //         dispatch({
+        //           type: LEAGUE_MATCHES,
+        //           league_matches: response.data.competitions,
+        //         },
+        //         {
+        //           type: COUNT_LEAGUE_MATCHES,
+        //           countLeagueMatches: response.data.count,
+        //         })
+        //       })
   }, [])
 
   return (
@@ -71,7 +77,7 @@ function LeagueMatches() {
             </svg>
             <p className={styles.name}>
               {
-                currentLeague.length ?
+                currentLeague ?
                 currentLeague[0].name : <></>
               }
             </p>
@@ -80,11 +86,11 @@ function LeagueMatches() {
           <div className={styles.filter}>
             <span className={styles.text}>с</span>
             <label className={styles.inputDate}>
-              <input type="date"></input>
+              <input id='start' type="date"></input>
             </label>
             <span className={styles.text}>по</span>
             <label className={styles.inputDate}>
-              <input type="date"></input>
+              <input id='end' type="date"></input>
             </label>
           </div>
           <div>
