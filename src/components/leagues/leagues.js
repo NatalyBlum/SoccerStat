@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 
 function Leagues() {
 
+  const data = useSelector((state) => state.leagues.leagues);
   const filteredData = useSelector((state) => state.leagues.filteredData);
   const isError  = useSelector((state) => state.leagues.isError);
   const currentPage = useSelector((state) => state.leagues.currentPage);
@@ -24,7 +25,7 @@ function Leagues() {
 
   return (
     <div className={styles.leagues}>
-      <Search />
+      <Search data={data}/>
       {
         isError ?
         <div>

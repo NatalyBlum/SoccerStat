@@ -52,7 +52,7 @@ const formatDate = (date) => {
                   getStatus(item)
                 }
               </td>
-              <td className={styles.cell}>{item.first_name}</td>
+              <td className={styles.cell}>{item.name}</td>
               <td className={styles.cell}>-</td>
               <td className={styles.cell}>{item.last_name}</td>
               <td className={styles.cellScore}>

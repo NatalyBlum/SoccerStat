@@ -17,8 +17,7 @@ function LeagueMatches() {
   const [leaguePerPage] = useState(8);
   const [selectStart, setSelectStart] = useState('');
   const [selectEnd, setSelectEnd] = useState('');
-  const mockData = MOCK_DATA;
-  const [dataList] = useState(mockData);
+  const [dataList] = useState(MOCK_DATA);
   const [isFiltered, setIsFiltered] = useState(false);
   const [filteredDate, setFilteredDate] = useState([]);
   const [countPage, setCountPage] = useState(1);

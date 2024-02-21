@@ -1,7 +1,7 @@
 .search {
   position: relative;
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   max-width: 539px;
   min-width: 315px;
 }

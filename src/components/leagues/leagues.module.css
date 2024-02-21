@@ -1,5 +1,5 @@
 .leagues {
-  padding: 15px;
+  padding: 25px;
   border-top: none;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .cardsItem:not(:last-child) {
-  margin-right: 15px;
+  margin-right: 25px;
 }
 
 .cardsItem:nth-child(3n) {
@@ -25,7 +25,7 @@
 .cardsItem {
   margin-bottom: 15px;
   padding: 40px 42px 32px 45px;
-  width: 32.6%;
+  width: 32.1%;
   min-height: 150px;
   border: 1px solid black;
 }

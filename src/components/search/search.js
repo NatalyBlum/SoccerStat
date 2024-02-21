@@ -1,5 +1,4 @@
 import styles from './search.module.css';
-import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { FILTERED_DATA } from '../../store/actions';
@@ -8,20 +7,18 @@ const filterData = (searchText, arrData) => {
   if (searchText === '') {
     return arrData;
   }
-  return arrData.filter((item) => (item.name.toLowerCase().includes(searchText.toLowerCase())) || (item.title.toLowerCase().includes(searchText.toLowerCase())))
+  return arrData.filter((item) => (item.name.toLowerCase().startsWith(searchText.toLowerCase())) || (item.title?.toLowerCase().startsWith(searchText.toLowerCase())))
 }
 
-function Search() {
+function Search(props) {
 
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.leagues.leagues);
-  const [dataList, setDataList] = useState(data);
-  // console.log(dataList)
+  const [dataList, setDataList] = useState(props.data);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
     const Debounce = setTimeout(() => {
-      const filteredData = filterData(search, data);
+      const filteredData = filterData(search, props.data);
       setDataList(filteredData);
     }, 300);
 

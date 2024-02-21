@@ -1,0 +1,63 @@
+.teams {
+  padding: 25px;
+  border-top: none;
+}
+
+.cardsList {
+  display: flex;
+  padding: 0;
+  margin-bottom: 0;
+  list-style: none;
+  flex-wrap: wrap;
+  font-size: 16px;
+  line-height: 16px;
+  color: #666;
+}
+
+.cardsItem:not(:last-child) {
+  margin-right: 25px;
+}
+
+.cardsItem:nth-child(7n) {
+  margin-right: 0;
+}
+
+.cardsItem {
+  margin-bottom: 25px;
+  padding: 15px;
+  width: 12.7%;
+  min-height: 170px;
+  border: 1px solid black;
+  background-image: url("../../../public/img/5043402.png");
+  background-repeat: no-repeat;
+  background-position: 50% 83%;
+}
+
+.cardsItem p {
+  margin: 0;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.message {
+  padding: 15px;
+  color: grey;
+}
+
+@media only screen and (min-width: 450px) {
+	.headerItem {
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.headerItem {
+		width: 33.333%;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.headerItem {
+		width: 25%;
+	}
+}
