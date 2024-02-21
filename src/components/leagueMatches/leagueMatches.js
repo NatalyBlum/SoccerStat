@@ -3,44 +3,51 @@ import { useParams } from 'react-router-dom';
 import PaginationBox from '../paginationBox/paginationBox';
 import styles from './leagueMatches.module.css';
 import MatchTable from '../matchTable/matchTable';
-import { useDispatch, useSelector } from 'react-redux';
-// import axios from 'axios';
-// import { LEAGUE_MATCHES, COUNT_LEAGUE_MATCHES, GET_ERROR } from '../../store/actions';
-// import { BASE_URL } from '../../App';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import  MOCK_DATA from '../../MOCK_DATA.json';
 
-const gf = (data) => {
-  let obj = {}
-  data.map((item) => {
-    if (obj[item.status]) {
-      obj[item.status] += 1
-    } else {
-      obj[item.status] = 1
-    }
-  })
-  return obj
-}
-
-console.log(gf(MOCK_DATA))
-
 function LeagueMatches() {
 
-  // const dispatch = useDispatch();
   const { id } = useParams();
   const data = useSelector((state) => state.leagues.leagues);
   const currentLeague = data.filter((item) => item._id === id);
   const currentPage = useSelector((state) => state.leagues.currentPage);
   const isError  = useSelector((state) => state.leagues.isError);
-  // const countMatches = useSelector((state) => state.leagues.countLeagueMatches);
-  const countMatches = MOCK_DATA.length;
-  console.log(countMatches);
   const [leaguePerPage] = useState(8);
+  const [selectStart, setSelectStart] = useState('');
+  const [selectEnd, setSelectEnd] = useState('');
+  const mockData = MOCK_DATA;
+  const [dataList] = useState(mockData);
+  const [isFiltered, setIsFiltered] = useState(false);
+  const [filteredDate, setFilteredDate] = useState([]);
+  const [countPage, setCountPage] = useState(1);
   const skip = (currentPage - 1) * leaguePerPage;
-  const countPage = Math.ceil(countMatches / leaguePerPage);
-  // const currentData = data.slice(skip, skip + leaguePerPage);
-  const currentData = MOCK_DATA.slice(skip, skip + leaguePerPage);
-  console.log(currentData);
+
+  const getCurrentDate = (data) => {
+    if (data) {
+      return data.slice(skip, skip + leaguePerPage);
+    }
+    return 0;
+  }
+
+  const filterDate = (selectStart, selectEnd, arrData) => {
+    if (selectStart === '' || selectEnd === '') {
+      setCountPage(Math.ceil(arrData.length / leaguePerPage))
+      return arrData;
+    }
+    const result = arrData.filter((item) => {
+      const itemDate = new Date(item.date);
+      const dateStart = new Date(selectStart);
+      const dateEnd = new Date(selectEnd);
+      if (itemDate.getTime() < dateEnd.getTime() && itemDate.getTime() > dateStart.getTime()) {
+        setIsFiltered(true);
+        return item;
+      }
+    })
+      setCountPage(Math.ceil(result.length / leaguePerPage))
+      return result;
+  }
 
   useEffect(() => {
         // axios.get(`http://api.football-data.org/v4/competitions/${id}/matches`)
@@ -61,6 +68,15 @@ function LeagueMatches() {
         //         })
         //       })
   }, [])
+
+  useEffect(() => {
+    const Debounce = setTimeout(() => {
+      const filteredDate = filterDate(selectStart, selectEnd, dataList);
+      setFilteredDate(filteredDate);
+    }, 200);
+
+    return () => setTimeout(Debounce);
+  }, [selectStart, selectEnd])
 
   return (
     <>
@@ -86,15 +102,25 @@ function LeagueMatches() {
           <div className={styles.filter}>
             <span className={styles.text}>с</span>
             <label className={styles.inputDate}>
-              <input id='start' type="date"></input>
+              <input
+                id='start'
+                type='date'
+                onChange={(e) => setSelectStart(e.target.value)}
+              />
             </label>
             <span className={styles.text}>по</span>
             <label className={styles.inputDate}>
-              <input id='end' type="date"></input>
+              <input
+                id='end'
+                type='date'
+                onChange={(e) => setSelectEnd(e.target.value)}
+              />
             </label>
           </div>
           <div>
-            <MatchTable data={currentData}/>
+            {
+              isFiltered ? <MatchTable data={getCurrentDate(filteredDate)}/> : <MatchTable data={getCurrentDate(dataList)}/>
+            }
           </div>
           <PaginationBox count={countPage} />
         </div>

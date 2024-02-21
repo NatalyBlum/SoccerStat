@@ -26,9 +26,13 @@ const getStatus = (obj) => {
   }
 }
 
-const formatDate = (string) => {
-  return string.replace(new RegExp('/', 'g'), '.')
+const formatDate = (date) => {
+  const arrDate = date.split('-');
+  arrDate.reverse();
+  return arrDate.join('.');
 }
+
+// console.log(props.data)
 
   return (
     <div>

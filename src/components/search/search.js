@@ -16,6 +16,7 @@ function Search() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.leagues.leagues);
   const [dataList, setDataList] = useState(data);
+  // console.log(dataList)
   const [search, setSearch] = useState('');
 
   useEffect(() => {
