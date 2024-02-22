@@ -59,51 +59,45 @@ function TeamMatches() {
 
   return (
     <>
-      {
-        isError ?
-        <div>
-          'Is Error'
-        </div> :
-        <div className={styles.calendarBox}>
-          <div className={styles.leagueMatches}>
-            <NavLink to={'/teams'} className={styles.headerLink}>Команды</NavLink>
-            <svg className={styles.arrow} width="10" height="8" viewBox="0 0 13 8" fill="none"   xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M6.65689 5.60651L1.35359 0.303208L0.646484 1.01031L6.65689 7.02072L12.6673 1.01031L11.9602 0.303208L6.65689 5.60651Z" fill="#A1A6B4"/>
-            </svg>
-            <p className={styles.name}>
-              {
-                currentTeam ?
-                currentTeam[0].name : <></>
-              }
-            </p>
-          </div>
-          <h3 className={styles.head}>Матчи</h3>
-          <div className={styles.filter}>
-            <span className={styles.text}>с</span>
-            <label className={styles.inputDate}>
-              <input
-                id='start'
-                type='date'
-                onChange={(e) => setSelectStart(e.target.value)}
-              />
-            </label>
-            <span className={styles.text}>по</span>
-            <label className={styles.inputDate}>
-              <input
-                id='end'
-                type='date'
-                onChange={(e) => setSelectEnd(e.target.value)}
-              />
-            </label>
-          </div>
-          <div>
+      <div className={styles.calendarBox}>
+        <div className={styles.leagueMatches}>
+          <NavLink to={'/teams'} className={styles.headerLink}>Команды</NavLink>
+          <svg className={styles.arrow} width="10" height="8" viewBox="0 0 13 8" fill="none"   xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.65689 5.60651L1.35359 0.303208L0.646484 1.01031L6.65689 7.02072L12.6673 1.01031L11.9602 0.303208L6.65689 5.60651Z" fill="#A1A6B4"/>
+          </svg>
+          <p className={styles.name}>
             {
-              isFiltered ? <MatchTable data={getCurrentDate(filteredDate)}/> : <MatchTable data={getCurrentDate(dataList)}/>
+              currentTeam ?
+              currentTeam[0].name : <></>
             }
-          </div>
-          <PaginationBox count={countPage} />
+          </p>
         </div>
-      }
+        <h3 className={styles.head}>Матчи</h3>
+        <div className={styles.filter}>
+          <span className={styles.text}>с</span>
+          <label className={styles.inputDate}>
+            <input
+              id='start'
+              type='date'
+              onChange={(e) => setSelectStart(e.target.value)}
+            />
+          </label>
+          <span className={styles.text}>по</span>
+          <label className={styles.inputDate}>
+            <input
+              id='end'
+              type='date'
+              onChange={(e) => setSelectEnd(e.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          {
+            isFiltered ? <MatchTable data={getCurrentDate(filteredDate)}/> : <MatchTable data={getCurrentDate(dataList)}/>
+          }
+        </div>
+        <PaginationBox count={countPage} />
+      </div>
     </>
   );
 }

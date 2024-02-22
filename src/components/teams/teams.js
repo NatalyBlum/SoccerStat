@@ -4,13 +4,11 @@ import { NavLink } from 'react-router-dom';
 import PaginationBox from '../paginationBox/paginationBox';
 import styles from './teams.module.css';
 import { useSelector } from 'react-redux';
-import  MOCK_DATA from '../../MOCK_DATA.json';
 
 function Teams() {
 
   const data = useSelector((state) => state.leagues.leagues);
   const filteredData = useSelector((state) => state.leagues.filteredData);
-  const isError  = useSelector((state) => state.leagues.isError);
   const currentPage = useSelector((state) => state.leagues.currentPage);
   const [leaguePerPage] = useState(14);
   const skip = (currentPage - 1) * leaguePerPage;
@@ -27,12 +25,6 @@ function Teams() {
   return (
     <div className={styles.teams}>
       <Search data={data}/>
-      {
-        isError ?
-        <div>
-          'Is Error'
-        </div> : <></>
-      }
       {
         currentData.length ?
         <div>

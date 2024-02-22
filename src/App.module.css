@@ -27,7 +27,11 @@ body {
   color: var(--grey-color);
 }
 
-.App {
+.error {
+  padding: 15px 15px 0 15px;
+}
+
+.app {
   margin: 0 auto;
   padding-top: 0;
   padding-bottom: 15px;

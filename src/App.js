@@ -9,15 +9,15 @@ import styles from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { LEAGUES, COUNT_LEAGUES, GET_ERROR } from './store/actions';
-// export const BASE_URL = 'http://example.front.ylab.io/api/v1/articles';
-export const BASE_URL = 'http://api.football-data.org/v4/competitions/';
+// export const BASE_URL = 'http://api.football-data.org/v4/competitions/';
 
 function App() {
 
   const dispatch = useDispatch();
+  // console.log(process.env.REACT_APP_BASE_URL)
 
   useEffect(() => {
-    axios.get(BASE_URL)
+    axios.get(process.env.REACT_APP_BASE_URL)
     .then(response => {
       if (response.status > 299) {
         dispatch({
@@ -33,31 +33,27 @@ function App() {
         count: response.data.count,
       })
     })
-  //   axios.get(BASE_URL)
-  //         .then(response => {
-  //           if (response.status > 299) {
-  //             dispatch({
-  //             type: GET_ERROR,
-  //             })
-  //           }
-  //           dispatch({
-  //             type: LEAGUES,
-  //             leagues: response.data.result.items,
-  //           })
-  //           dispatch({
-  //             type: COUNT_LEAGUES,
-  //             countLeagues: response.data.result.items.length,
-  //           })
-  //         })
+    .catch (response => {
+      dispatch({
+        type: GET_ERROR,
+      })
+    })
   }, [])
 
   const data = useSelector((state) => state.leagues.leagues);
+  const isError  = useSelector((state) => state.leagues.isError);
 
   return (
-    <div className={styles.App}>
+    <div className={styles.app}>
       <div>
         <Header />
       </div>
+      {
+        isError ?
+        <div className={styles.error}>
+          Вы достигли лимита запросов.
+        </div> : <></>
+      }
       {
         data ?
         <Routes>

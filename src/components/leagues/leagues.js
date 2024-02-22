@@ -9,7 +9,6 @@ function Leagues() {
 
   const data = useSelector((state) => state.leagues.leagues);
   const filteredData = useSelector((state) => state.leagues.filteredData);
-  const isError  = useSelector((state) => state.leagues.isError);
   const currentPage = useSelector((state) => state.leagues.currentPage);
   const [leaguePerPage] = useState(9);
   const skip = (currentPage - 1) * leaguePerPage;
@@ -26,12 +25,6 @@ function Leagues() {
   return (
     <div className={styles.leagues}>
       <Search data={data}/>
-      {
-        isError ?
-        <div>
-          'Is Error'
-        </div> : <></>
-      }
       {
         currentData.length ?
         <div>
