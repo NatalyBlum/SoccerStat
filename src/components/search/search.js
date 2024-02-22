@@ -7,7 +7,7 @@ const filterData = (searchText, arrData) => {
   if (searchText === '') {
     return arrData;
   }
-  return arrData.filter((item) => (item.name.toLowerCase().startsWith(searchText.toLowerCase())) || (item.title?.toLowerCase().startsWith(searchText.toLowerCase())))
+  return arrData.filter((item) => (item.name.toLowerCase().startsWith(searchText.toLowerCase())) || (item.area.name?.toLowerCase().startsWith(searchText.toLowerCase())))
 }
 
 function Search(props) {

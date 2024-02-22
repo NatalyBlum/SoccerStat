@@ -11,7 +11,7 @@ function Leagues() {
   const filteredData = useSelector((state) => state.leagues.filteredData);
   const isError  = useSelector((state) => state.leagues.isError);
   const currentPage = useSelector((state) => state.leagues.currentPage);
-  const [leaguePerPage] = useState(3);
+  const [leaguePerPage] = useState(9);
   const skip = (currentPage - 1) * leaguePerPage;
 
   const getCurrentData = (data) => {
@@ -36,9 +36,13 @@ function Leagues() {
         currentData.length ?
         <div>
           <div className={styles.cardsList}>{
-            currentData.map(item => <NavLink to={`/leagueMatches/${item._id}`} key={item._id} item={item} className={styles.cardsItem}>
-              <p>{item.name}</p>
-              <p>{item.name}</p>
+            currentData.map(item => <NavLink to={`/leagueMatches/${item.id}`} key={item.id} item={item} className={styles.cardsItem}>
+              {
+                item.name ? <p>{item.name}</p> : <p>-</p>
+              }
+              {
+                item.area.name ? <p>{item.area.name}</p> : <p>-</p>
+              }
             </NavLink>
             )}
             </div>

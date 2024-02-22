@@ -11,7 +11,6 @@ let initialState = {
 }
 
 export const leaguesReducer = (state = initialState, action) => {
-  console.log(action)
   switch(action.type) {
     case LEAGUES:
       return {
@@ -46,12 +45,6 @@ export const leaguesReducer = (state = initialState, action) => {
         ...state,
         filteredData: action.filteredData,
       }
-    // case CURRENT_PAGE_DATA_LEAGUE_MATCH:
-    //   return {
-    //     ...state,
-    //     currentPageDataLeagueMatch: action.currentPageDataLeagueMatch,
-    //     isError: false,
-    //   }
     case GET_ERROR:
       return {
         ...state,

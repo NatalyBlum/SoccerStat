@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PaginationBox from '../paginationBox/paginationBox';
-import styles from './leagueMatches.module.css';
+import styles from './teamMatches.module.css';
 import MatchTable from '../matchTable/matchTable';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import  MOCK_DATA from '../../MOCK_DATA.json';
 
-function LeagueMatches() {
+function TeamMatches() {
 
   const { id } = useParams();
   const data = useSelector((state) => state.leagues.leagues);
-  const currentLeague = data.filter((item) => String(item.id) === id);
+  const currentTeam = data.filter((item) => String(item.id) === id);
   const currentPage = useSelector((state) => state.leagues.currentPage);
   const isError  = useSelector((state) => state.leagues.isError);
   const [leaguePerPage] = useState(8);
@@ -49,29 +49,10 @@ function LeagueMatches() {
   }
 
   useEffect(() => {
-        // axios.get(`http://api.football-data.org/v4/competitions/${id}/matches`)
-        //       .then(response => {
-        //         if (response.status > 299) {
-            //       dispatch({
-            //       type: GET_ERROR,
-            //       })
-            //     }
-        //         dispatch({
-        //           type: LEAGUE_MATCHES,
-        //           league_matches: response.data.competitions,
-        //         },
-        //         {
-        //           type: COUNT_LEAGUE_MATCHES,
-        //           countLeagueMatches: response.data.count,
-        //         })
-        //       })
-  }, [])
-
-  useEffect(() => {
     const Debounce = setTimeout(() => {
       const filteredDate = filterDate(selectStart, selectEnd, dataList);
       setFilteredDate(filteredDate);
-    }, 200);
+    }, 300);
 
     return () => setTimeout(Debounce);
   }, [selectStart, selectEnd])
@@ -85,14 +66,14 @@ function LeagueMatches() {
         </div> :
         <div className={styles.calendarBox}>
           <div className={styles.leagueMatches}>
-            <NavLink to={'/'} className={styles.headerLink}>Лиги</NavLink>
+            <NavLink to={'/teams'} className={styles.headerLink}>Команды</NavLink>
             <svg className={styles.arrow} width="10" height="8" viewBox="0 0 13 8" fill="none"   xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M6.65689 5.60651L1.35359 0.303208L0.646484 1.01031L6.65689 7.02072L12.6673 1.01031L11.9602 0.303208L6.65689 5.60651Z" fill="#A1A6B4"/>
             </svg>
             <p className={styles.name}>
               {
-                currentLeague ?
-                currentLeague[0].name : <></>
+                currentTeam ?
+                currentTeam[0].name : <></>
               }
             </p>
           </div>
@@ -127,4 +108,4 @@ function LeagueMatches() {
   );
 }
 
-export default LeagueMatches;
+export default TeamMatches;

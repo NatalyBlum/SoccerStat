@@ -1,0 +1,63 @@
+.calendarBox {
+  padding: 15px;
+}
+
+.leagueMatches {
+  display: flex;
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 7px;
+  left: 80px;
+  transform: rotate(270deg);
+}
+
+.headerLink {
+  position: relative;
+}
+
+.headerLink:after {
+  display: block;
+	position: absolute;
+	left: 0;
+	width: 0;
+	height: 1px;
+	background-color: #0b7d9d;
+	content: "";
+	transition: width 0.3s ease-out;
+}
+
+.headerLink:hover:after {
+	width: 100%;
+}
+
+.headerLink:hover {
+  color: #0b7d9d;
+  transition: width 0.3s ease-out;
+}
+
+.name {
+  margin: 0;
+  margin-bottom: 10px;
+  padding-left: 27px;
+}
+
+.head {
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.text {
+  padding-right: 10px;
+}
+
+.inputDate {
+  padding-right: 10px;
+}
+
+.filter {
+  margin-bottom: 15px;
+}

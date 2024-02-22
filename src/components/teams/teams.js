@@ -8,24 +8,25 @@ import  MOCK_DATA from '../../MOCK_DATA.json';
 
 function Teams() {
 
+  const data = useSelector((state) => state.leagues.leagues);
   const filteredData = useSelector((state) => state.leagues.filteredData);
   const isError  = useSelector((state) => state.leagues.isError);
   const currentPage = useSelector((state) => state.leagues.currentPage);
   const [leaguePerPage] = useState(14);
   const skip = (currentPage - 1) * leaguePerPage;
 
-  const getCurrentData = (MOCK_DATA) => {
-    if (!MOCK_DATA) {
+  const getCurrentData = (data) => {
+    if (!data) {
       return [];
     }
-    return MOCK_DATA.slice(skip, skip + leaguePerPage);
+    return data.slice(skip, skip + leaguePerPage);
   }
   let currentData = getCurrentData(filteredData);
   const countPage = Math.ceil(filteredData.length / leaguePerPage);
 
   return (
     <div className={styles.teams}>
-      <Search data={MOCK_DATA}/>
+      <Search data={data}/>
       {
         isError ?
         <div>
@@ -38,7 +39,6 @@ function Teams() {
           <div className={styles.cardsList}>{
             currentData.map(item => <NavLink to={`/teamMatches/${item.id}`} key={item.id} item={item} className={styles.cardsItem}>
               <p>{item.name}</p>
-              {/* <img className={styles.img} src='../../../public/img/5043402.png' alt='Logo'/> */}
             </NavLink>
             )}
             </div>

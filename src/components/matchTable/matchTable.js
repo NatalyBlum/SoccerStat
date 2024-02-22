@@ -32,8 +32,6 @@ const formatDate = (date) => {
   return arrDate.join('.');
 }
 
-// console.log(props.data)
-
   return (
     <div>
       {
