@@ -39,3 +39,9 @@ body {
   box-sizing: border-box;
   border: 2px solid black;
 }
+
+@media (max-width: 414px) {
+  .app {
+    padding-bottom: 90px;
+  }
+}

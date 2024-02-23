@@ -19,3 +19,9 @@
   background-color: transparent;
   cursor: pointer;
 }
+
+.searchLabel {
+  width: 0;
+  height: 0;
+  font-size: 0;
+}

@@ -2,7 +2,7 @@
   padding: 15px;
 }
 
-.leagueMatches {
+.teamMatches {
   display: flex;
   position: relative;
 }
@@ -50,14 +50,41 @@
   font-weight: 600;
 }
 
-.text {
-  padding-right: 10px;
+.labelDate {
+  width: 0;
+  height: 0;
+  font-size: 0;
 }
 
 .inputDate {
-  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .filter {
   margin-bottom: 15px;
+}
+
+@media (max-width: 896px) {
+  .calendarBox {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 414px) {
+  .headerLink {
+    font-size: 16px;
+  }
+
+  .head {
+    font-size: 16px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+
+  .calendarBox {
+    padding: 8px;
+  }
 }

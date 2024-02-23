@@ -10,7 +10,7 @@ function Teams() {
   const data = useSelector((state) => state.leagues.leagues);
   const filteredData = useSelector((state) => state.leagues.filteredData);
   const currentPage = useSelector((state) => state.leagues.currentPage);
-  const [leaguePerPage] = useState(14);
+  const [leaguePerPage] = useState(12);
   const skip = (currentPage - 1) * leaguePerPage;
 
   const getCurrentData = (data) => {

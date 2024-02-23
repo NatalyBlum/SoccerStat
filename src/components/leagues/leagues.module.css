@@ -35,20 +35,34 @@
   color: grey;
 }
 
-@media only screen and (min-width: 450px) {
-	.headerItem {
-		width: 50%;
-	}
+@media (max-width: 1421px) {
+  .cardsItem {
+    width: 32%;
+  }
 }
 
-@media only screen and (min-width: 768px) {
-	.headerItem {
-		width: 33.333%;
-	}
+@media (max-width: 896px) {
+  .cardsItem {
+    width: 31.3%;
+  }
 }
 
-@media only screen and (min-width: 1000px) {
-	.headerItem {
-		width: 25%;
-	}
+@media (max-width: 414px) {
+  .leagues {
+    padding: 10px;
+  }
+
+  .cardsItem{
+    padding: 10px;
+    width: 46.0%;
+  }
+
+  .cardsItem:nth-child(3n) {
+    margin-right: 25px;
+  }
+
+  .cardsItem:nth-child(2n) {
+    margin-right: 0;
+  }
+
 }

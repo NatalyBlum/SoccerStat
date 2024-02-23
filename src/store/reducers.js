@@ -3,5 +3,4 @@ import { leaguesReducer } from './leagues-reducer';
 
 export const rootReducer = combineReducers({
   leagues: leaguesReducer,
-  // leaguesCalendar: leagueCalendarReducer
 })

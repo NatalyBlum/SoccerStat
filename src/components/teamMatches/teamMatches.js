@@ -58,7 +58,7 @@ function TeamMatches() {
   return (
     <>
       <div className={styles.calendarBox}>
-        <div className={styles.leagueMatches}>
+        <div className={styles.teamMatches}>
           <NavLink to={'/teams'} className={styles.headerLink}>Команды</NavLink>
           <svg className={styles.arrow} width="10" height="8" viewBox="0 0 13 8" fill="none"   xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd" clipRule="evenodd" d="M6.65689 5.60651L1.35359 0.303208L0.646484 1.01031L6.65689 7.02072L12.6673 1.01031L11.9602 0.303208L6.65689 5.60651Z" fill="#A1A6B4"/>
@@ -72,22 +72,26 @@ function TeamMatches() {
         </div>
         <h3 className={styles.head}>Матчи</h3>
         <div className={styles.filter}>
-          <span className={styles.text}>с</span>
-          <label for="start" className={styles.inputDate}>
+        <form>
+            <span className={styles.text}>с</span>
+            <label htmlFor="start" className={styles.labelDate}>Дата начала</label>
             <input
-              id='start'
-              type='date'
+              id="start"
+              name="start"
+              type="date"
+              className={styles.inputDate}
               onChange={(e) => setSelectStart(e.target.value)}
             />
-          </label>
-          <span className={styles.text}>по</span>
-          <label for="end" className={styles.inputDate}>
+            <span className={styles.text}>по</span>
+            <label htmlFor="end" className={styles.labelDate}>Дата окончания</label>
             <input
-              id='end'
-              type='date'
+              id="end"
+              name="end"
+              type="date"
+              className={styles.inputDate}
               onChange={(e) => setSelectEnd(e.target.value)}
             />
-          </label>
+          </form>
         </div>
         <div>
           {
