@@ -5,9 +5,7 @@
 }
 
 .cellScore {
-  border-top: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
-	padding: 5px 25px 5px 25px;
+  display: flex;
 }
 
 .matchTable {
@@ -20,17 +18,16 @@
 	font-weight: bold;
 	padding: 5px;
 	background: #efefef;
-	border: 1px solid #dddddd;
 }
 
 .score {
   padding-right: 5px;
-  width: 80px;
+  width: 25%;
 }
 
 .scoreGrey {
   padding-right: 5px;
-  width: 80px;
+  width: 25%;
   color: rgb(170, 170, 170);
 }
 
@@ -45,10 +42,12 @@
   }
 
   .score {
+    width: 32%;
     font-size: 16px;
   }
 
   .scoreGrey {
+    width: 32%;
     font-size: 16px;
   }
 
@@ -63,7 +62,7 @@
   }
 
   .cellScore {
-    padding: 7px;
+    padding: 0px;
   }
 
   .score {

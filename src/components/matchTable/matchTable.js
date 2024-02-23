@@ -40,8 +40,9 @@ const formatDate = (date) => {
       {
         data ?
         <table id="table" className={styles.matchTable}>
-        {
-          data.map((item) => <tr className={styles.string} key={item._id}>
+          <tbody>
+          {
+          data.map((item) => <tr className={styles.string} key={item.id}>
               <td className={styles.cell}>
                 {
                   formatDate(item.date)
@@ -56,26 +57,29 @@ const formatDate = (date) => {
               <td className={styles.cell}>{item.name}</td>
               <td className={styles.cell}>-</td>
               <td className={styles.cell}>{item.last_name}</td>
-              <td className={styles.cellScore}>
-                <td className={styles.score}>
-                  {
-                    (!item.score || !item.score2) ? '-' : <>{item.score}:{item.score2}</>
-                  }
-                </td>
-                <td className={styles.scoreGrey}>
-                  {
-                    (!item.score || !item.score2) ? '-' : <>({item.score}:{item.score2})</>
-                  }
-                </td>
-                <td className={styles.scoreGrey}>
-                  {
-                    (!item.score || !item.score2) ? '-' : <>({item.score}:{item.score2})</>
-                  }
-                </td>
+              <td className={styles.cell}>
+                <div className={styles.cellScore}>
+                  <span className={styles.score}>
+                    {
+                      (!item.score || !item.score2) ? '-' : <>{item.score}:{item.score2}</>
+                    }
+                  </span>
+                  <span className={styles.scoreGrey}>
+                    {
+                      (!item.score || !item.score2) ? '-' : <>({item.score}:{item.score2})</>
+                    }
+                  </span>
+                  <span className={styles.scoreGrey}>
+                    {
+                      (!item.score || !item.score2) ? '-' : <>({item.score}:{item.score2})</>
+                    }
+                  </span>
+                </div>
               </td>
             </tr>
           )
         }
+          </tbody>
       </table> : <></>
       }
     </div>
