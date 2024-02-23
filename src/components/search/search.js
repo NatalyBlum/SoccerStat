@@ -2,6 +2,7 @@ import styles from './search.module.css';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { FILTERED_DATA } from '../../store/actions';
+import PropTypes from 'prop-types';
 
 const filterData = (searchText, arrData) => {
   if (searchText === '') {
@@ -12,13 +13,15 @@ const filterData = (searchText, arrData) => {
 
 function Search(props) {
 
+  const { data } = props;
+
   const dispatch = useDispatch();
-  const [dataList, setDataList] = useState(props.data);
+  const [dataList, setDataList] = useState(data);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
     const Debounce = setTimeout(() => {
-      const filteredData = filterData(search, props.data);
+      const filteredData = filterData(search, data);
       setDataList(filteredData);
     }, 300);
 
@@ -34,8 +37,9 @@ function Search(props) {
 
   return (
     <form className={styles.search} action="https://jsonplaceholder.typicode.com/ posts" method="post">
-      <label>
+      <label htmlFor="search">
         <input
+          id="search"
           className={styles.searchInput}
           value={search}
           type="text"
@@ -52,5 +56,9 @@ function Search(props) {
     </form>
   );
 }
+
+Search.propTypes = {
+  data: PropTypes.array,
+};
 
 export default Search;

@@ -1,6 +1,9 @@
 import styles from './matchTable.module.css';
+import PropTypes from 'prop-types';
 
 function MatchTable(props) {
+
+  const { data } = props;
 
 const getStatus = (obj) => {
   if (!obj.score || !obj.score2) {
@@ -35,10 +38,10 @@ const formatDate = (date) => {
   return (
     <div>
       {
-        props.data ?
+        data ?
         <table id="table" className={styles.matchTable}>
         {
-          props.data.map((item) => <tr className={styles.string} key={item._id}>
+          data.map((item) => <tr className={styles.string} key={item._id}>
               <td className={styles.cell}>
                 {
                   formatDate(item.date)
@@ -78,5 +81,9 @@ const formatDate = (date) => {
     </div>
   );
 }
+
+MatchTable.propTypes = {
+  data: PropTypes.array,
+};
 
 export default MatchTable;

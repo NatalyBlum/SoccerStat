@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import PaginationBox from '../paginationBox/paginationBox';
 import styles from './teamMatches.module.css';
 import MatchTable from '../matchTable/matchTable';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import  MOCK_DATA from '../../MOCK_DATA.json';
 
 function TeamMatches() {
@@ -13,7 +12,6 @@ function TeamMatches() {
   const data = useSelector((state) => state.leagues.leagues);
   const currentTeam = data.filter((item) => String(item.id) === id);
   const currentPage = useSelector((state) => state.leagues.currentPage);
-  const isError  = useSelector((state) => state.leagues.isError);
   const [leaguePerPage] = useState(8);
   const [selectStart, setSelectStart] = useState('');
   const [selectEnd, setSelectEnd] = useState('');
@@ -63,7 +61,7 @@ function TeamMatches() {
         <div className={styles.leagueMatches}>
           <NavLink to={'/teams'} className={styles.headerLink}>Команды</NavLink>
           <svg className={styles.arrow} width="10" height="8" viewBox="0 0 13 8" fill="none"   xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.65689 5.60651L1.35359 0.303208L0.646484 1.01031L6.65689 7.02072L12.6673 1.01031L11.9602 0.303208L6.65689 5.60651Z" fill="#A1A6B4"/>
+            <path fillRule="evenodd" clipRule="evenodd" d="M6.65689 5.60651L1.35359 0.303208L0.646484 1.01031L6.65689 7.02072L12.6673 1.01031L11.9602 0.303208L6.65689 5.60651Z" fill="#A1A6B4"/>
           </svg>
           <p className={styles.name}>
             {
@@ -75,7 +73,7 @@ function TeamMatches() {
         <h3 className={styles.head}>Матчи</h3>
         <div className={styles.filter}>
           <span className={styles.text}>с</span>
-          <label className={styles.inputDate}>
+          <label for="start" className={styles.inputDate}>
             <input
               id='start'
               type='date'
@@ -83,7 +81,7 @@ function TeamMatches() {
             />
           </label>
           <span className={styles.text}>по</span>
-          <label className={styles.inputDate}>
+          <label for="end" className={styles.inputDate}>
             <input
               id='end'
               type='date'

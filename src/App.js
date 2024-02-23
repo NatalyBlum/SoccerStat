@@ -33,7 +33,7 @@ function App() {
         count: response.data.count,
       })
     })
-    .catch (response => {
+    .catch (() => {
       dispatch({
         type: GET_ERROR,
       })
