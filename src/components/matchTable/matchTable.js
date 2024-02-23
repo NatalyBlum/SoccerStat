@@ -10,21 +10,21 @@ const getStatus = (obj) => {
     return '-'
   } else {
     if (obj.status === 'Blue' || obj.status === 'Aquamarine') {
-      return 'SCHEDULED'
+      return 'Запланирован'
     } else if (obj.status === 'Crimson' || obj.status === 'Fuscia' || obj.status === 'Turquoise') {
-      return 'LIVE'
+      return 'В прямом эфире'
     } else if (obj.status === 'Goldenrod' || obj.status === 'Green' || obj.status === 'Violet') {
-      return 'IN_PLAY'
+      return 'В игре'
     } else if (obj.status === 'Indigo' || obj.status === 'Khaki' || obj.status === 'Yellow') {
-      return 'PAUSED'
+      return 'Пауза'
     } else if (obj.status === 'Maroon' || obj.status === 'Mauv') {
-      return 'FINISHED'
+      return 'Завершен'
     } else if (obj.status === 'Orange' || obj.status === 'Pink') {
-      return 'POSTPONED'
+      return 'Отложен'
     } else if (obj.status === 'Puce' || obj.status === 'Purple') {
-      return 'SUSPENDED'
+      return 'Приостановлен'
     } else if (obj.status === 'Red' || obj.status === 'Teal') {
-      return 'CANCELED'
+      return 'Отменен'
     }
   }
 }

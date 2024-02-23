@@ -4,7 +4,7 @@ import PaginationBox from '../paginationBox/paginationBox';
 import styles from './teamMatches.module.css';
 import MatchTable from '../matchTable/matchTable';
 import { useSelector } from 'react-redux';
-import  MOCK_DATA from '../../MOCK_DATA.json';
+import  MOCK_DATA from '../../MOCK_DATA.new.json';
 
 function TeamMatches() {
 
