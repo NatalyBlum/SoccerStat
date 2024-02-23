@@ -38,15 +38,20 @@
   transition: width 0.3s ease-out;
 }
 
-/*
-.headerLink:focus {
-  text-decoration: none;
-  justify-content: start;
-  color: blue;
-} */
-
 .headerItem {
   padding: 25px;
   list-style-type:  none;
+}
 
+.headerLogo {
+  padding: 5px;
+  list-style-type:  none;
+}
+
+.logo {
+  width: 65px;
+  height: 65px;
+  background-image: url("../../../public/img/5043402.65.png");
+  background-repeat: no-repeat;
+  background-position: 0 0;
 }

@@ -50,12 +50,15 @@
   font-weight: 600;
 }
 
-.text {
-  padding-right: 10px;
+.labelDate {
+  width: 0;
+  height: 0;
+  font-size: 0;
 }
 
 .inputDate {
-  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .filter {

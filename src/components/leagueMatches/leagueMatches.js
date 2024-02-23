@@ -99,23 +99,25 @@ function LeagueMatches() {
         </div>
         <h3 className={styles.head}>Матчи</h3>
         <div className={styles.filter}>
-          <span className={styles.text}>с</span>
           <form>
-            <label for="start" className={styles.inputDate}>
-              <input
-                id="start"
-                type="date"
-                onChange={(e) => setSelectStart(e.target.value)}
-              />
-            </label>
+            <span className={styles.text}>с</span>
+            <label htmlFor="start" className={styles.labelDate}>Дата начала</label>
+            <input
+              id="start"
+              name="start"
+              type="date"
+              className={styles.inputDate}
+              onChange={(e) => setSelectStart(e.target.value)}
+            />
             <span className={styles.text}>по</span>
-            <label for="end" className={styles.inputDate}>
-              <input
-                id="end"
-                type="date"
-                onChange={(e) => setSelectEnd(e.target.value)}
-              />
-            </label>
+            <label htmlFor="end" className={styles.labelDate}>Дата окончания</label>
+            <input
+              id="end"
+              name="end"
+              type="date"
+              className={styles.inputDate}
+              onChange={(e) => setSelectEnd(e.target.value)}
+            />
           </form>
         </div>
         <div>

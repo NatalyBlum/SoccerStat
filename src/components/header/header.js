@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './header.module.css';
 import { NavLink } from 'react-router-dom';
 
@@ -8,10 +7,9 @@ function Header() {
     <div className={styles.header}>
       <nav>
         <ul className={styles.headerList}>
-          <li className={styles.headerItem}>
-            <a href='/#' className={styles.headerLink}>
-              Лого
-            </a>
+          <li className={styles.headerLogo}>
+            <div className={styles.logo}>
+            </div>
           </li>
           <li className={styles.headerItem}>
             <NavLink to={'/'} className={styles.headerLink}>Лиги</NavLink>

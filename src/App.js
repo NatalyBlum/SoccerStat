@@ -8,8 +8,8 @@ import TeamMatches from './components/teamMatches/teamMatches';
 import styles from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { LEAGUES, COUNT_LEAGUES, GET_ERROR } from './store/actions';
-// export const BASE_URL = 'http://api.football-data.org/v4/competitions/';
+import { LEAGUES, COUNT_LEAGUES } from './store/actions';
+import COMPETITIONAL_DATA from './COMPETITION_DATA.json';
 
 function App() {
 
@@ -19,14 +19,9 @@ function App() {
   useEffect(() => {
     axios.get(process.env.REACT_APP_BASE_URL)
     .then(response => {
-      if (response.status > 299) {
-        dispatch({
-        type: GET_ERROR,
-        })
-      }
       dispatch({
-        type: LEAGUES,
-        leagues: response.data.competitions,
+        // type: LEAGUES,
+        // leagues: response.data.competitions,
       })
       dispatch({
         type: COUNT_LEAGUES,
@@ -35,7 +30,9 @@ function App() {
     })
     .catch (() => {
       dispatch({
-        type: GET_ERROR,
+        // type: GET_ERROR,
+        type: LEAGUES,
+        leagues: COMPETITIONAL_DATA.competitions,
       })
     })
   }, [])
