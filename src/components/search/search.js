@@ -1,11 +1,11 @@
-import styles from './search.module.css';
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { FILTERED_DATA } from '../../store/actions';
-import PropTypes from 'prop-types';
+import styles from "./search.module.css";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { FILTERED_DATA } from "../../store/actions";
+import PropTypes from "prop-types";
 
 const filterData = (searchText, arrData) => {
-  if (searchText === '') {
+  if (searchText === "") {
     return arrData;
   }
   return arrData.filter((item) => (item.name.toLowerCase().startsWith(searchText.toLowerCase())) || (item.area.name?.toLowerCase().startsWith(searchText.toLowerCase())))
@@ -26,14 +26,14 @@ function Search(props) {
     }, 300);
 
     return () => setTimeout(Debounce);
-  }, [search])
+  }, [search, data])
 
   useEffect(() => {
     dispatch({
       type: FILTERED_DATA,
       filteredData: dataList,
     })
-  }, [dataList])
+  }, [dataList, dispatch])
 
   return (
     <form className={styles.search} action="https://jsonplaceholder.typicode.com/ posts" method="post">

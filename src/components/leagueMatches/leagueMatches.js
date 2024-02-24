@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import PaginationBox from "../paginationBox/paginationBox";
 import styles from "./leagueMatches.module.css";
@@ -27,26 +27,33 @@ function LeagueMatches() {
     return 0;
   };
 
-  const filterDate = (selectStart, selectEnd, arrData) => {
+  const filterDate = useCallback((selectStart, selectEnd, arrData) => {
+    const dateStart = new Date(selectStart);
+    const dateEnd = new Date(selectEnd);
+    const result = [];
     if (selectStart === "" || selectEnd === "") {
       setCountPage(Math.ceil(arrData.length / leaguePerPage));
       return arrData;
     }
-    const result = arrData.filter((item) => {
-      const itemDate = new Date(item.date);
-      const dateStart = new Date(selectStart);
-      const dateEnd = new Date(selectEnd);
-      if (
-        itemDate.getTime() < dateEnd.getTime() &&
-        itemDate.getTime() > dateStart.getTime()
-      ) {
-        setIsFiltered(true);
-        return item;
-      }
-    });
+    if (dateStart.getTime() > dateEnd.getTime()) {
+      setIsFiltered(true);
+      setCountPage(0);
+      return result;
+    } else {
+      arrData.filter((item) => {
+        const itemDate = new Date(item.date);
+        if (
+          itemDate.getTime() < dateEnd.getTime() &&
+          itemDate.getTime() > dateStart.getTime()
+        ) {
+          setIsFiltered(true);
+          result.push(item);
+        }
+      })
+    }
     setCountPage(Math.ceil(result.length / leaguePerPage));
     return result;
-  };
+  }, [leaguePerPage]);
 
   useEffect(() => {
     const Debounce = setTimeout(() => {
@@ -55,7 +62,7 @@ function LeagueMatches() {
     }, 200);
 
     return () => setTimeout(Debounce);
-  }, [selectStart, selectEnd]);
+  }, [selectStart, selectEnd, dataList, filterDate]);
 
   return (
     <>

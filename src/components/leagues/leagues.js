@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import Search from '../search/search';
-import { NavLink } from 'react-router-dom';
-import PaginationBox from '../paginationBox/paginationBox';
-import styles from './leagues.module.css';
-import { useSelector } from 'react-redux';
+import { useState } from "react";
+import Search from "../search/search";
+import { NavLink } from "react-router-dom";
+import PaginationBox from "../paginationBox/paginationBox";
+import styles from "./leagues.module.css";
+import { useSelector } from "react-redux";
 
 function Leagues() {
 

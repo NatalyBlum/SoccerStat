@@ -35,7 +35,7 @@ function App() {
         leagues: COMPETITIONAL_DATA.competitions,
       })
     })
-  }, [])
+  }, [dispatch])
 
   const data = useSelector((state) => state.leagues.leagues);
   const isError  = useSelector((state) => state.leagues.isError);

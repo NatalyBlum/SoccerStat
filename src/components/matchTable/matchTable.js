@@ -1,5 +1,5 @@
-import styles from './matchTable.module.css';
-import PropTypes from 'prop-types';
+import styles from "./matchTable.module.css";
+import PropTypes from "prop-types";
 
 function MatchTable(props) {
 
@@ -31,17 +31,17 @@ function MatchTable(props) {
                 <div className={styles.cellScore}>
                   <span className={styles.score}>
                     {
-                      (!item.score || !item.score2) ? '-' : <>{item.score}:{item.score2}</>
+                      (!item.score || !item.score2) ? "-" : <>{item.score}:{item.score2}</>
                     }
                   </span>
                   <span className={styles.scoreGrey}>
                     {
-                      (!item.score || !item.score2) ? '-' : <>({item.score}:{item.score2})</>
+                      (!item.score || !item.score2) ? "-" : <>({item.score}:{item.score2})</>
                     }
                   </span>
                   <span className={styles.scoreGrey}>
                     {
-                      (!item.score || !item.score2) ? '-' : <>({item.score}:{item.score2})</>
+                      (!item.score || !item.score2) ? "-" : <>({item.score}:{item.score2})</>
                     }
                   </span>
                 </div>

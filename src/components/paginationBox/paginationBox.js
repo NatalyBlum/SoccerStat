@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import styles from './paginationBox.module.css';
-import { Container, Pagination } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { CURRENT_PAGE } from '../../store/actions';
-import PropTypes from 'prop-types';
+import { useState, useEffect } from "react";
+import styles from "./paginationBox.module.css";
+import { Container, Pagination } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { CURRENT_PAGE } from "../../store/actions";
+import PropTypes from "prop-types";
 
 function PaginationBox(props) {
 
@@ -16,7 +16,7 @@ function PaginationBox(props) {
       type: CURRENT_PAGE,
       currentPage: currentPage,
     })
-  }, [currentPage])
+  }, [currentPage, dispatch])
 
     return (
       <div className={styles.paginationWrap}>

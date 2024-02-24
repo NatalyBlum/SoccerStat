@@ -1,5 +1,5 @@
-import styles from './header.module.css';
-import { NavLink } from 'react-router-dom';
+import styles from "./header.module.css";
+import { NavLink } from "react-router-dom";
 
 function Header() {
 
@@ -12,10 +12,10 @@ function Header() {
             </div>
           </li>
           <li className={styles.headerItem}>
-            <NavLink to={'/'} className={styles.headerLink}>Лиги</NavLink>
+            <NavLink to={"/"} className={styles.headerLink}>Лиги</NavLink>
           </li>
           <li className={styles.headerItem}>
-            <NavLink to={'/teams'} className={styles.headerLink}>Команды</NavLink>
+            <NavLink to={"/teams"} className={styles.headerLink}>Команды</NavLink>
           </li>
         </ul>
       </nav>
