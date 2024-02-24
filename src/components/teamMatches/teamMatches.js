@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
-import PaginationBox from '../paginationBox/paginationBox';
-import styles from './teamMatches.module.css';
-import MatchTable from '../matchTable/matchTable';
-import { useSelector } from 'react-redux';
-import  MOCK_DATA from '../../MOCK_DATA.new.json';
+import { useState, useEffect } from "react";
+import { useParams, NavLink } from "react-router-dom";
+import PaginationBox from "../paginationBox/paginationBox";
+import styles from "./teamMatches.module.css";
+import ContainerMatchTable from "../containerMatchTable/containerMatchTable";
+import { useSelector } from "react-redux";
+import  MOCK_DATA from "../../MOCK_DATA.new.json";
 
 function TeamMatches() {
 
@@ -95,7 +95,7 @@ function TeamMatches() {
         </div>
         <div>
           {
-            isFiltered ? <MatchTable data={getCurrentDate(filteredDate)}/> : <MatchTable data={getCurrentDate(dataList)}/>
+            isFiltered ? <ContainerMatchTable data={getCurrentDate(filteredDate)}/> : <ContainerMatchTable data={getCurrentDate(dataList)}/>
           }
         </div>
         <PaginationBox count={countPage} />

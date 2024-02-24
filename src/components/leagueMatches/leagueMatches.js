@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import PaginationBox from "../paginationBox/paginationBox";
 import styles from "./leagueMatches.module.css";
-import MatchTable from "../matchTable/matchTable";
+import ContainerMatchTable from "../containerMatchTable/containerMatchTable";
 import { useSelector } from "react-redux";
 import MOCK_DATA from "../../MOCK_DATA.new.json";
 
@@ -47,20 +47,6 @@ function LeagueMatches() {
     setCountPage(Math.ceil(result.length / leaguePerPage));
     return result;
   };
-
-  useEffect(() => {
-    // axios.get(`http://api.football-data.org/v4/competitions/${id}/matches`)
-    //       .then(response => {
-    //         dispatch({
-    //           type: LEAGUE_MATCHES,
-    //           league_matches: response.data.competitions,
-    //         })
-    //         dispatch({
-    //           type: COUNT_LEAGUE_MATCHES,
-    //           countLeagueMatches: response.data.count,
-    //         })
-    //       })
-  }, []);
 
   useEffect(() => {
     const Debounce = setTimeout(() => {
@@ -122,9 +108,9 @@ function LeagueMatches() {
         </div>
         <div>
           {isFiltered ? (
-            <MatchTable data={getCurrentDate(filteredDate)} />
+            <ContainerMatchTable data={getCurrentDate(filteredDate)} />
           ) : (
-            <MatchTable data={getCurrentDate(dataList)} />
+            <ContainerMatchTable data={getCurrentDate(dataList)} />
           )}
         </div>
         <PaginationBox count={countPage} />
