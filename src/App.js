@@ -8,20 +8,20 @@ import TeamMatches from './components/teamMatches/teamMatches';
 import styles from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { LEAGUES, COUNT_LEAGUES } from './store/actions';
-import COMPETITIONAL_DATA from './COMPETITION_DATA.json';
+import { LEAGUES, COUNT_LEAGUES, GET_ERROR } from './store/actions';
 
 function App() {
 
   const dispatch = useDispatch();
-  // console.log(process.env.REACT_APP_BASE_URL)
 
   useEffect(() => {
     axios.get(process.env.REACT_APP_BASE_URL)
     .then(response => {
+      console.log(process.env.REACT_APP_BASE_URL)
+      console.log(response)
       dispatch({
-        // type: LEAGUES,
-        // leagues: response.data.competitions,
+        type: LEAGUES,
+        leagues: response.data.competitions,
       })
       dispatch({
         type: COUNT_LEAGUES,
@@ -30,9 +30,7 @@ function App() {
     })
     .catch (() => {
       dispatch({
-        // type: GET_ERROR,
-        type: LEAGUES,
-        leagues: COMPETITIONAL_DATA.competitions,
+        type: GET_ERROR,
       })
     })
   }, [dispatch])
