@@ -1,7 +1,7 @@
 {
   "name": "soccer-stat",
   "version": "0.1.0",
-  "proxy":"http://api.football-data.org",
+  "proxy": "http://api.football-data.org",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.3",
@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "dotenv": "^16.4.5",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
