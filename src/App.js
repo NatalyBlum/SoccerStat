@@ -17,8 +17,6 @@ function App() {
   useEffect(() => {
     axios.get(process.env.REACT_APP_BASE_URL)
     .then(response => {
-      console.log(process.env.REACT_APP_BASE_URL)
-      console.log(response)
       dispatch({
         type: LEAGUES,
         leagues: response.data.competitions,
